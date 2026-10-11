@@ -1,0 +1,23 @@
+# Run this cell AFTER all four models have been trained successfully.
+# It saves the trained models and preprocessing objects into one file.
+
+import joblib
+
+model_bundle = {
+    "models": {
+        "SVM": svm_model,
+        "KNN": knn_model,
+        "Decision Tree": dt_model,
+        "Random Forest": rf_model,
+    },
+    "scaler": scaler,
+    "label_encoder": label_encoder,
+    "features": features,
+}
+
+joblib.dump(model_bundle, "fault_models.joblib")
+print("Saved: fault_models.joblib")
+
+# In Google Colab, run this next line to download the file to your computer:
+from google.colab import files
+files.download("fault_models.joblib")
